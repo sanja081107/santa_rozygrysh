@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block body %}
+    <div class="container text-center" style="padding-top: 100px;">
+        <div class="row">
+            <div class="col"></div>
+            <div id="search-results" class="col-12">
+                <h3>Код: {{ el.code }}</h3>
+                <h3>Сокращенное имя: {{ el.short_name }}</h3>
+                <h3>Полное имя: {{ el.full_name }}</h3>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% if codes %}
+    {% for el in codes %}
+            <div class="u-container-align-center u-container-style u-custom-item u-list-item u-palette-1-base u-radius-20 u-repeater-item u-shape-round"
+                 style="height: 50px; margin-top: 10px;">
+              <div class="u-container-layout u-similar-container u-valign-middle u-container-layout-1">
+                <a href="{% url 'code_detail' el.pk %}" style="text-align: center;">&nbsp;{{ el.code }} - {{ el.full_name }}</a>
+              </div>
+            </div>
+    {% endfor %}
+{% else %}
+    <h1 style="padding-top: 35%;">Начните поиск</h1>
+{% endif %}
