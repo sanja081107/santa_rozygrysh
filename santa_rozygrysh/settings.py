@@ -31,7 +31,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+# для работы debug toolbar
+INTERNAL_IPS = ['127.0.0.1', '*']
 
 # Application definition
 
@@ -46,6 +47,8 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'import_export',
 
+    'debug_toolbar',
+
 ]
 
 MIDDLEWARE = [
@@ -56,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'santa_rozygrysh.urls'
@@ -63,7 +67,7 @@ ROOT_URLCONF = 'santa_rozygrysh.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -162,3 +166,7 @@ DEFAULT_FROM_EMAIL = env('EMAIL_LOGIN')
 
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 2000000
 IMPORT_EXPORT_SKIP_ADMIN_CONFIRM = True
+
+
+SITE_ID = 1
+
